@@ -10,6 +10,8 @@ class PrimaryTextfieldWidget extends StatelessWidget {
   final bool? isPassword;
   final TextEditingController? controller;
   final String? Function(String?)? validator;
+  final TextInputType? inputType;
+  final int? maxLines;
 
   const PrimaryTextfieldWidget({
     super.key,
@@ -19,6 +21,8 @@ class PrimaryTextfieldWidget extends StatelessWidget {
     this.isPassword,
     this.controller,
     this.validator,
+    this.inputType,
+    this.maxLines,
   });
 
   @override
@@ -26,6 +30,8 @@ class PrimaryTextfieldWidget extends StatelessWidget {
     return SizedBox(
       width: width ?? 331.w,
       child: TextFormField(
+        maxLines: maxLines ?? 1,
+        keyboardType: inputType ?? TextInputType.text,
         controller: controller,
         validator: validator,
         autofocus: false,
@@ -55,7 +61,7 @@ class PrimaryTextfieldWidget extends StatelessWidget {
             borderSide: BorderSide(color: AppColors.primary, width: 1),
           ),
           filled: true,
-          fillColor: AppColors.gray,
+          fillColor: AppColors.white,
           suffixIcon: suffixIcon,
         ),
       ),
